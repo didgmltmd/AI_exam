@@ -11,6 +11,7 @@ interface QuestionCarouselProps {
   onSelectQuestion: (id: number) => void;
   onAnswerChange: (id: number, value: string) => void;
   onSubmit: (id: number) => void;
+  onResetQuestion: (id: number) => void;
   onToggleFeedbackHidden: (id: number) => void;
 }
 
@@ -22,6 +23,7 @@ export const QuestionCarousel = ({
   onSelectQuestion,
   onAnswerChange,
   onSubmit,
+  onResetQuestion,
   onToggleFeedbackHidden,
 }: QuestionCarouselProps) => {
   const currentIndex = useMemo(
@@ -83,6 +85,7 @@ export const QuestionCarousel = ({
           errorMessage={errorMessage}
           onAnswerChange={(value) => onAnswerChange(currentQuestion.id, value)}
           onSubmit={() => onSubmit(currentQuestion.id)}
+          onResetQuestion={() => onResetQuestion(currentQuestion.id)}
           onToggleFeedbackHidden={() => onToggleFeedbackHidden(currentQuestion.id)}
         />
       </div>

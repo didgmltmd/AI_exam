@@ -10,6 +10,7 @@ interface QuestionCardProps {
   errorMessage: string | null;
   onAnswerChange: (value: string) => void;
   onSubmit: () => void;
+  onResetQuestion: () => void;
   onToggleFeedbackHidden: () => void;
 }
 
@@ -19,6 +20,7 @@ export const QuestionCard = ({
   errorMessage,
   onAnswerChange,
   onSubmit,
+  onResetQuestion,
   onToggleFeedbackHidden,
 }: QuestionCardProps) => (
   <div className="grid h-full max-h-full min-h-0 gap-4 overflow-hidden xl:grid-cols-[minmax(0,1.1fr)_minmax(420px,0.9fr)]">
@@ -43,6 +45,9 @@ export const QuestionCard = ({
       <div className="shrink-0 flex flex-wrap items-center gap-3">
         <Button onClick={onSubmit} disabled={isSubmitting}>
           {isSubmitting ? '채점 중...' : '현재 답안 채점'}
+        </Button>
+        <Button variant="ghost" onClick={onResetQuestion} disabled={isSubmitting}>
+          이 문제 초기화
         </Button>
         <p className="text-xs text-slate-400">
           현재 문제만 OpenAI API로 전송됩니다. 제출 후 피드백은 자동 저장됩니다.

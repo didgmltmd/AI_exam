@@ -17,6 +17,7 @@ function App() {
   const [saveError, setSaveError] = useState<string | null>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isResetModalOpen, setIsResetModalOpen] = useState(false);
+  const [isQuestionResetModalOpen, setIsQuestionResetModalOpen] = useState(false);
   const [submittingId, setSubmittingId] = useState<number | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -116,6 +117,19 @@ function App() {
     setIsResetModalOpen(false);
   };
 
+  const handleResetCurrentQuestion = () => {
+    updateQuestion(appState.currentQuestionId, (prev) => ({
+      ...prev,
+      answer: '',
+      feedback: undefined,
+      isFeedbackHidden: false,
+      lastEvaluatedAt: undefined,
+      lastSavedAt: new Date().toISOString(),
+    }));
+    setSubmitError(null);
+    setIsQuestionResetModalOpen(false);
+  };
+
   const handleRandomQuestion = () => {
     const target =
       appState.questions[Math.floor(Math.random() * appState.questions.length)] ?? appState.questions[0];
@@ -170,6 +184,7 @@ function App() {
             onSelectQuestion={handleSelectQuestion}
             onAnswerChange={handleAnswerChange}
             onSubmit={handleSubmit}
+            onResetQuestion={() => setIsQuestionResetModalOpen(true)}
             onToggleFeedbackHidden={handleToggleFeedbackHidden}
           />
         </div>
@@ -189,6 +204,15 @@ function App() {
         confirmLabel="전체 초기화"
         onConfirm={handleReset}
         onClose={() => setIsResetModalOpen(false)}
+      />
+
+      <ConfirmModal
+        open={isQuestionResetModalOpen}
+        title="현재 문제 답안과 피드백을 삭제할까요?"
+        description="이 문제에 작성한 답안과 AI 피드백만 삭제됩니다. 다른 문제 데이터는 유지됩니다."
+        confirmLabel="이 문제 초기화"
+        onConfirm={handleResetCurrentQuestion}
+        onClose={() => setIsQuestionResetModalOpen(false)}
       />
     </div>
   );
