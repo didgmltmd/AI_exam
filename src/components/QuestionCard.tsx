@@ -23,13 +23,13 @@ export const QuestionCard = ({
   onResetQuestion,
   onToggleFeedbackHidden,
 }: QuestionCardProps) => (
-  <div className="grid gap-4 xl:h-full xl:max-h-full xl:min-h-0 xl:overflow-hidden 2xl:grid-cols-[minmax(0,1.1fr)_minmax(420px,0.9fr)]">
+  <div className="grid gap-4 md:grid-cols-[minmax(0,1.18fr)_minmax(280px,0.82fr)] xl:h-full xl:max-h-full xl:min-h-0 xl:overflow-hidden 2xl:grid-cols-[minmax(0,1.08fr)_minmax(380px,0.92fr)]">
     <Card className="flex flex-col space-y-5 overflow-hidden xl:h-full xl:max-h-full xl:min-h-0">
       <div className="shrink-0 space-y-2">
         <p className="inline-flex rounded-full bg-brand-50 px-3 py-1 text-sm font-semibold text-brand-700">
           문제 {question.id}
         </p>
-        <h2 className="text-xl font-bold leading-tight text-slate-950 sm:text-2xl">
+        <h2 className="text-xl font-bold leading-tight text-slate-950 sm:text-2xl md:text-[1.55rem] lg:text-[1.7rem] xl:text-2xl">
           {question.question}
         </h2>
       </div>
@@ -56,7 +56,7 @@ export const QuestionCard = ({
         >
           이 문제 초기화
         </Button>
-        <p className="w-full text-xs text-slate-400 xl:w-auto">
+        <p className="w-full text-xs text-slate-400">
           현재 문제만 OpenAI API로 전송됩니다. 제출 후 피드백은 자동 저장됩니다.
         </p>
       </div>
