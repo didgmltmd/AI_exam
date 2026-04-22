@@ -52,7 +52,7 @@ export const QuestionCarousel = ({
   }, [currentIndex, onSelectQuestion, questions]);
 
   return (
-    <section className="flex h-full min-h-0 flex-1 flex-col space-y-3 overflow-hidden">
+    <section className="flex min-h-0 flex-1 flex-col space-y-3 overflow-visible xl:h-full xl:overflow-hidden">
       <div className="shrink-0 flex items-center justify-between">
         <p className="text-lg font-bold text-slate-950">
           {currentIndex + 1} / {questions.length}
@@ -78,7 +78,10 @@ export const QuestionCarousel = ({
         </div>
       </div>
 
-      <div key={currentQuestion.id} className="animate-card-fade min-h-0 flex-1 overflow-hidden">
+      <div
+        key={currentQuestion.id}
+        className="animate-card-fade min-h-0 flex-1 overflow-visible xl:overflow-hidden"
+      >
         <QuestionCard
           question={currentQuestion}
           isSubmitting={isSubmitting}

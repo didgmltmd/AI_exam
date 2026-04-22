@@ -154,8 +154,8 @@ function App() {
   };
 
   return (
-    <div className="h-screen overflow-hidden bg-transparent px-4 py-4 text-slate-900 sm:px-6 lg:px-8">
-      <div className="mx-auto flex h-full w-full max-w-[1400px] min-h-0 flex-col gap-4">
+    <div className="min-h-screen overflow-x-hidden overflow-y-auto bg-transparent px-3 py-3 text-slate-900 sm:px-4 sm:py-4 lg:px-6 xl:h-screen xl:overflow-hidden xl:px-8">
+      <div className="mx-auto flex min-h-screen w-full max-w-[1400px] flex-col gap-4 xl:h-full xl:min-h-0">
         <Header
           currentQuestionId={appState.currentQuestionId}
           answeredIds={answeredIds}

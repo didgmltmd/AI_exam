@@ -42,7 +42,7 @@ export const FeedbackPanel = ({
   const [isHintOpen, setIsHintOpen] = useState(false);
 
   return (
-    <Card className="flex h-full max-h-full min-h-0 flex-col space-y-4 overflow-hidden">
+    <Card className="flex flex-col space-y-4 overflow-hidden xl:h-full xl:max-h-full xl:min-h-0">
       <div className="shrink-0 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-sm font-medium text-slate-500">AI 채점 결과</p>
@@ -50,10 +50,10 @@ export const FeedbackPanel = ({
           <p className="mt-1 text-xs text-slate-400">최근 채점 시각: {formatDateTime(lastEvaluatedAt)}</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button variant="secondary" onClick={() => setIsHintOpen((prev) => !prev)}>
+          <Button variant="secondary" onClick={() => setIsHintOpen((prev) => !prev)} className="flex-1 sm:flex-none">
             {isHintOpen ? '힌트 닫기' : '힌트 보기'}
           </Button>
-          <Button variant="secondary" onClick={onToggleHidden}>
+          <Button variant="secondary" onClick={onToggleHidden} className="flex-1 sm:flex-none">
             {hidden ? '보기' : '가리기'}
           </Button>
         </div>
@@ -79,7 +79,7 @@ export const FeedbackPanel = ({
         </div>
       </div>
 
-      <div className="scrollbar-hidden min-h-0 flex-1 overflow-y-auto">
+      <div className="scrollbar-hidden min-h-0 flex-1 overflow-y-visible xl:overflow-y-auto">
         {isLoading ? (
           <div className="space-y-3">
             <div className="h-8 w-24 animate-pulse rounded-xl bg-slate-100" />
